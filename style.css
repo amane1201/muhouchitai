@@ -91,56 +91,43 @@ header .container {
 }
 
 .site-title a {
-    color: #ffffff; /* 文字色を白に固定 */
-    /* 虹色の縁を表現するための多層シャドウ。この色がhue-rotateで変化する基盤となる */
+    color: #ffffff;
     text-shadow:
-        0 0 8px rgba(0, 255, 255, 0.8), /* ベースとなるシアン系の輝き */
-        0 0 15px rgba(0, 255, 255, 0.6),
-        0 0 25px rgba(0, 255, 255, 0.4);
-    animation: rainbow-glow-animate 8s linear infinite, neon-pulse 1.5s infinite alternate; /* 虹色アニメーションとネオンの脈動 */
+        0 0 10px rgba(0, 255, 255, 0.7),
+        0 0 20px rgba(0, 255, 255, 0.5),
+        0 0 30px rgba(128, 0, 128, 0.4),
+        0 0 40px rgba(0, 200, 200, 0.3);
+    animation: edamamex-neon-pulse 2s infinite alternate;
     transition: all 0.3s ease;
-    /* ハードウェアアクセラレーションを強制し、描画の安定性を向上 */
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     transform: translateZ(0);
 }
 
-/* 虹色に光るアニメーション（text-shadowの色相を変化させる） */
-@keyframes rainbow-glow-animate {
+@keyframes edamamex-neon-pulse {
     0% {
-        -webkit-filter: hue-rotate(0deg);
-        filter: hue-rotate(0deg);
+        text-shadow:
+            0 0 10px rgba(0, 255, 255, 0.7),
+            0 0 20px rgba(0, 255, 255, 0.5),
+            0 0 30px rgba(128, 0, 128, 0.4),
+            0 0 40px rgba(0, 200, 200, 0.3);
     }
     100% {
-        -webkit-filter: hue-rotate(360deg);
-        filter: hue-rotate(360deg);
+        text-shadow:
+            0 0 15px rgba(0, 255, 255, 1),
+            0 0 30px rgba(0, 255, 255, 0.7),
+            0 0 45px rgba(128, 0, 128, 0.6),
+            0 0 60px rgba(0, 200, 200, 0.5);
     }
 }
-
-/* ネオンの脈動アニメーション（光の強さを変化させる） */
-@keyframes neon-pulse {
-    from {
-        text-shadow:
-            0 0 8px rgba(0, 255, 255, 0.8),
-            0 0 15px rgba(0, 255, 255, 0.6),
-            0 0 25px rgba(0, 255, 255, 0.4);
-    }
-    to {
-        text-shadow:
-            0 0 12px rgba(0, 255, 255, 1),
-            0 0 20px rgba(0, 255, 255, 0.8),
-            0 0 30px rgba(0, 255, 255, 0.6);
-    }
-}
-
 
 .site-title a:hover {
     transform: scale(1.05);
-    /* ホバー時は輝きをさらに強く */
     text-shadow:
-        0 0 15px rgba(0, 255, 255, 1),
-        0 0 25px rgba(0, 255, 255, 0.8),
-        0 0 40px rgba(0, 255, 255, 0.6);
+        0 0 20px rgba(0, 255, 255, 1),
+        0 0 40px rgba(0, 255, 255, 0.8),
+        0 0 60px rgba(128, 0, 128, 0.7),
+        0 0 80px rgba(0, 200, 200, 0.6);
 }
 
 .main-nav {
@@ -243,7 +230,10 @@ header .container {
     height: 3px;
     background-color: var(--primary-color);
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-    box-shadow: 0 0 5px var(--primary-color);
+    box-shadow:
+        0 0 5px rgba(0, 255, 255, 0.7),
+        0 0 10px rgba(0, 255, 255, 0.5),
+        0 0 15px rgba(128, 0, 128, 0.3);
     border-radius: 2px;
 }
 
@@ -512,7 +502,6 @@ footer .social-links a:hover {
     text-shadow: var(--glow-strength-secondary);
 }
 
-/* --- スマートフォン向けのメディアクエリ --- */
 @media (max-width: 992px) {
     #header-stats {
         margin-left: 10px;
@@ -526,20 +515,20 @@ footer .social-links a:hover {
 @media (max-width: 768px) {
     header .container {
         flex-direction: column;
-        align-items: center; /* 中央揃えを維持 */
+        align-items: center;
     }
 
     .site-title {
         margin-bottom: 20px;
-        width: 100%; /* 親要素の幅いっぱいに広げる */
-        text-align: center; /* タイトル自体を中央揃え */
-        order: 1; /* 縦並びの最初に来るようにする */
+        width: 100%;
+        text-align: center;
+        order: 1;
     }
 
     .main-nav {
         order: 3;
         width: 100%;
-        display: none; /* 初期状態では非表示 */
+        display: none;
         flex-direction: column;
         position: absolute;
         top: 80px;
@@ -598,17 +587,17 @@ footer .social-links a:hover {
     }
 
     #header-stats {
-        order: 2; /* サイトタイトルとナビゲーションの間に来るようにする */
+        order: 2;
         width: 100%;
-        flex-direction: row; /* 横並びに戻す */
-        justify-content: center; /* 中央揃え */
+        flex-direction: row;
+        justify-content: center;
         margin-top: 15px;
         margin-left: 0;
         gap: 20px;
     }
 
     .menu-toggle {
-        order: unset; /* orderを解除し、HTMLの並び順に従うか、flexのデフォルト位置に戻す */
+        order: unset;
         position: absolute;
         right: 20px;
         top: 20px;
@@ -659,8 +648,8 @@ footer .social-links a:hover {
 
 @media (max-width: 480px) {
     .site-title {
-        font-size: 1.8em; /* フォントサイズをさらに調整 */
-        margin-bottom: 15px; /* マージンを調整 */
+        font-size: 1.8em;
+        margin-bottom: 15px;
     }
     .hero-content h2 {
         font-size: 2em;
@@ -670,8 +659,8 @@ footer .social-links a:hover {
     }
 
     #header-stats {
-        flex-direction: column; /* 縦並びに戻す */
+        flex-direction: column;
         gap: 5px;
-        align-items: center; /* 中央揃え */
+        align-items: center;
     }
 }
