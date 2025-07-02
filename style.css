@@ -443,30 +443,17 @@ a {
 
 .feature-grid {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap; /* ここを'wrap'に変更 */
     gap: 20px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 20px;
-    justify-content: center;
+    /* overflow-x: auto; */ /* 削除 */
+    /* -webkit-overflow-scrolling: touch; */ /* 削除 */
+    padding-bottom: 0px; /* 必要なければ削除 */
+    justify-content: center; /* 中央寄せ */
     align-items: flex-start;
 }
 
-.feature-grid::-webkit-scrollbar {
-    height: 8px;
-}
-.feature-grid::-webkit-scrollbar-track {
-    background: var(--light-pink);
-    border-radius: 10px;
-}
-.feature-grid::-webkit-scrollbar-thumb {
-    background: var(--primary-pink);
-    border-radius: 10px;
-}
-.feature-grid::-webkit-scrollbar-thumb:hover {
-    background: var(--pastel-blue);
-}
-
+/* スクロールバーのスタイル（不要になるため削除） */
+/* .feature-grid::-webkit-scrollbar { display: none; } */
 
 .feature-item {
     background-color: var(--light-pink);
@@ -482,7 +469,9 @@ a {
     justify-content: center;
     flex-shrink: 0;
 
-    width: 250px;
+    /* 幅を調整して、PCで3つ並ぶように */
+    width: calc(33.333% - 20px); /* 3列表示 - gap分 */
+    min-width: 250px; /* 最小幅を設定して小さくなりすぎないように */
     aspect-ratio: 1 / 1;
     padding: 20px;
     box-sizing: border-box;
@@ -799,11 +788,16 @@ a {
     }
 
     .feature-grid {
-        justify-content: flex-start;
+        /* スマホでは縦に1列で並ぶように調整 */
+        flex-direction: column; /* 縦並びに変更 */
+        align-items: center; /* 中央寄せ */
+        gap: 20px; /* 縦方向の隙間 */
+        padding-bottom: 0; /* 不要なパディングを削除 */
     }
     .feature-item {
-        width: 200px;
-        padding: 12px;
+        width: 80%; /* スマホでは幅を大きく */
+        max-width: 300px; /* 最大幅で調整 */
+        padding: 20px;
     }
     .feature-emoji {
         font-size: 3.5em;
