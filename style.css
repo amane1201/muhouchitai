@@ -215,33 +215,53 @@ a {
     align-items: center;
 }
 
-.nav-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
+@media (max-width: 768px) {
+    /* 1. メニュー全体の重なりと配置を強制リセット */
+    .nav-menu {
+        position: fixed !important;
+        top: 0;
+        left: -100%; /* 非表示時 */
+        width: 100% !important;
+        height: 100vh !important;
+        background-color: rgba(255, 192, 203, 0.98); /* 背景を少し濃くして文字を見やすく */
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        z-index: 9999 !important; /* 一番手前に持ってくる */
+        transition: left 0.4s ease-in-out;
+    }
 
-    background-color: rgba(255, 192, 203, 0.98);
-    display: flex;
-    justify-content: center; /* 横中央 */
-    align-items: center;     /* 縦中央 */
+    .nav-menu.active {
+        left: 0; /* 表示時 */
+    }
 
-    transition: 0.4s;
-    z-index: 1000;
-}
-
-
+    /* 2. リスト自体の余白を完全にゼロにする */
     .nav-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+        gap: 20px; /* メニュー項目間の距離 */
+    }
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 28px; /* ← 行間、ここ大事 */
+    /* 3. PC版の margin-left: 35px を完全に打ち消す（これが重要！） */
+    .nav-list li {
+        margin: 0 !important;
+        padding: 0 !important;
+        text-align: center;
+        list-style: none;
+    }
+
+    .nav-list a {
+        font-size: 1.5em; /* スマホで見やすい大きさに */
+        display: block;
+        padding: 10px 0;
+    }
 }
+
 
 
 
