@@ -958,3 +958,7 @@ a {
 .member-card:hover .member-icon img {
     transform: scale(1.1);
 }
+.hamburger-menu {
+    z-index: 100000 !important; /* 他の何を差し置いても一番手前！ */
+    cursor: pointer !important;
+}
