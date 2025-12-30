@@ -216,28 +216,33 @@ a {
 }
 
 .nav-menu {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 100%;
-        height: 100vh;
-        background-color: rgba(255, 192, 203, 0.98); /* 少し透明感を入れると可愛い */
-        transition: 0.4s;
-        display: flex;
-        
-        /* ↓ここを修正・追加 */
-        align-items: center;       /* 縦方向中央 */
-        justify-content: center;    /* 横方向中央 */
-        padding-top: 60px;          /* ヘッダーに被らないように少し隙間を作る */
-        box-sizing: border-box;     /* パディングを含めた高さ計算にする */
-    }
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+
+    background-color: rgba(255, 192, 203, 0.98);
+    display: flex;
+    justify-content: center; /* 横中央 */
+    align-items: center;     /* 縦中央 */
+
+    transition: 0.4s;
+    z-index: 1000;
+}
+
 
     .nav-list {
-        flex-direction: column;
-        text-align: center;
-        /* ↓メニュー全体を少し上にずらしたい場合はここを調整 */
-        margin-top: -10vh; 
-    }
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px; /* ← 行間、ここ大事 */
+}
+
 
 
 
