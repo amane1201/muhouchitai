@@ -156,64 +156,123 @@ a {
     width: 100%;
 }
 
-/* --- ハンバーガーメニューの基本スタイル --- */
+/* ==========================================
+   ハンバーガーメニュー：バツ印の対称性を完全固定
+   ========================================== */
 .hamburger-menu {
-    display: none; /* デスクトップでは隠す */
+    display: flex !important;
+    position: fixed !important;
+    right: 20px !important;
+    top: 25px !important;
+    width: 32px !important;
+    height: 22px !important;
+    z-index: 100001 !important;
     flex-direction: column;
     justify-content: space-between;
-    width: 30px;   /* 幅を指定 */
-    height: 20px;  /* 高さを指定 */
     cursor: pointer;
-    z-index: 1001;
-    position: relative;
 }
 
-/* --- ハンバーガーメニューのバツ印を左右対称に --- */
 .hamburger-menu span {
     display: block !important;
     width: 100% !important;
     height: 3px !important;
     background-color: var(--text-light) !important;
     border-radius: 10px;
-    transition: all 0.3s ease;
-    transform-origin: center; /* 中央を基準に回転させる */
+    transition: all 0.35s ease-in-out;
+    transform-origin: center !important; /* 中央を軸に回転 */
 }
 
-/* 真ん中の線を消しつつ、上下を綺麗にクロスさせる */
+/* アクティブ時（バツ印）の左右対称設定 */
 .hamburger-menu.active span:nth-child(1) {
-    transform: translateY(8.5px) rotate(45deg) !important;
+    transform: translateY(9.5px) rotate(45deg) !important;
 }
 
 .hamburger-menu.active span:nth-child(2) {
     opacity: 0 !important;
-    transform: translateX(10px) !important;
+    transform: translateX(20px) !important; /* 右にフェードアウト */
 }
 
 .hamburger-menu.active span:nth-child(3) {
-    transform: translateY(-8.5px) rotate(-45deg) !important;
+    transform: translateY(-9.5px) rotate(-45deg) !important;
 }
 
-/* --- スライダーのボタンを可愛く調整 --- */
+/* 幽霊メニュー（重複した不要な三本線）を完全に消去 */
+.logo + .hamburger-menu,
+.nav-menu .hamburger-menu,
+header .hamburger-menu:not(#hamburgerMenu) {
+    display: none !important;
+}
+
+
+/* ==========================================
+   スライダーボタン：ポップで可愛い丸デザイン
+   ========================================== */
 .slider-btn {
-    background-color: var(--primary-pink);
-    color: white;
-    border: 3px solid white;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%; /* まんまる */
+    background-color: var(--primary-pink) !important;
+    color: white !important;
+    border: 4px solid white !important; /* 白枠でぷっくり感を強調 */
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50% !important;
     cursor: pointer;
-    font-size: 1.2rem;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    z-index: 10;
+    font-size: 1.5rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    box-shadow: 0 5px 15px rgba(255, 192, 203, 0.6) !important;
+    z-index: 100;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    padding: 0;
 }
+
+.slider-btn:hover {
+    background-color: var(--pastel-blue) !important;
+    transform: translateY(-50%) scale(1.15) !important;
+    box-shadow: 0 8px 20px rgba(173, 216, 230, 0.8) !important;
+}
+
+.slider-btn:active {
+    transform: translateY(-50%) scale(0.95) !important;
+}
+
+/* ボタンの位置をスライダーの枠外に配置 */
+.prev-btn { left: -25px !important; }
+.next-btn { right: -25px !important; }
+
+@media (max-width: 768px) {
+    .slider-btn {
+        width: 42px !important;
+        height: 42px !important;
+        font-size: 1.2rem !important;
+    }
+    .prev-btn { left: -15px !important; }
+    .next-btn { right: -15px !important; }
+}
+
+
+/* ==========================================
+   メンバーアイコン：円形を維持
+   ========================================== */
+.member-icon {
+    width: 130px !important;
+    height: 130px !important;
+    border-radius: 50% !important;
+    border: 4px solid var(--primary-pink);
+    overflow: hidden !important;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.member-icon img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+
 
 .slider-btn:hover {
     background-color: var(--pastel-blue);
