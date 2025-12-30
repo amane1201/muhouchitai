@@ -954,11 +954,31 @@ a {
     transition: transform 0.4s ease; /* ★これを追加 */
 }
 
-/* ★これを追加：マウスを乗せた時に画像が1.1倍になる */
-.member-card:hover .member-icon img {
-    transform: scale(1.1);
-}
+/* 右上の三本線を「絶対に」右上に固定する設定 */
 .hamburger-menu {
-    z-index: 100000 !important; /* 他の何を差し置いても一番手前！ */
-    cursor: pointer !important;
+    display: flex !important;
+    position: fixed !important; /* absoluteからfixedに変更。これで画面の右上に張り付きます */
+    right: 20px !important;
+    top: 25px !important;      /* 上からの距離。ロゴの高さに合わせて微調整してください */
+    width: 35px !important;
+    height: 25px !important;
+    z-index: 100001 !important; /* ピンクのメニュー画面(9999)より確実に上に持ってくる */
+    flex-direction: column;
+    justify-content: space-between;
 }
+
+/* 棒の見た目（見えないのを防ぐ） */
+.hamburger-menu span {
+    display: block !important;
+    width: 100% !important;
+    height: 3px !important;
+    background-color: var(--text-light) !important;
+    border-radius: 10px;
+}
+
+/* 左上に出てしまう幽霊（古い残骸）を力技で消す */
+.logo + .hamburger-menu,
+.nav-menu .hamburger-menu {
+    display: none !important;
+}
+
