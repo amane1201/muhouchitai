@@ -216,26 +216,28 @@ a {
 }
 
 @media (max-width: 768px) {
-    /* 1. メニュー全体の重なりと配置を強制リセット */
+    /* 1. 全画面メニューのベース：flexで中身を真ん中に集める */
     .nav-menu {
         position: fixed !important;
         top: 0;
-        left: -100%; /* 非表示時 */
-        width: 100% !important;
+        left: -100%; /* 非表示時は左に隠す */
+        width: 100vw !important; /* 画面幅いっぱい */
         height: 100vh !important;
-        background-color: rgba(255, 192, 203, 0.98); /* 背景を少し濃くして文字を見やすく */
+        background-color: rgba(255, 192, 203, 0.98); /* 背景を少し濃くして読みやすく */
         display: flex !important;
+        flex-direction: column !important;
         justify-content: center !important;
         align-items: center !important;
-        z-index: 9999 !important; /* 一番手前に持ってくる */
+        z-index: 9999 !important;
         transition: left 0.4s ease-in-out;
     }
 
+    /* メニューが開いたとき */
     .nav-menu.active {
-        left: 0; /* 表示時 */
+        left: 0 !important;
     }
 
-    /* 2. リスト自体の余白を完全にゼロにする */
+    /* 2. リスト（ul）自体の余白を完全にゼロにする */
     .nav-list {
         display: flex !important;
         flex-direction: column !important;
@@ -244,27 +246,22 @@ a {
         padding: 0 !important;
         margin: 0 !important;
         width: 100% !important;
-        gap: 20px; /* メニュー項目間の距離 */
+        gap: 30px; /* リンク同士の間隔 */
     }
 
-    /* 3. PC版の margin-left: 35px を完全に打ち消す（これが重要！） */
+    /* 3. 重要：PC版の margin-left: 35px を完全に消す */
     .nav-list li {
-        margin: 0 !important;
+        margin: 0 !important; 
         padding: 0 !important;
-        text-align: center;
-        list-style: none;
+        display: block !important;
     }
 
     .nav-list a {
-        font-size: 1.5em; /* スマホで見やすい大きさに */
-        display: block;
-        padding: 10px 0;
+        font-size: 1.8em; /* スマホで押しやすいサイズに */
+        color: var(--text-light);
+        text-shadow: 1px 1px 4px rgba(0,0,0,0.1);
     }
 }
-
-
-
-
 
 .hero-section {
     background: linear-gradient(160deg, var(--primary-pink) 0%, var(--pastel-lavender) 50%, var(--pastel-blue) 100%);
