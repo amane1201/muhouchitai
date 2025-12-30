@@ -215,20 +215,31 @@ a {
     align-items: center;
 }
 
-.nav-menu.active .nav-list li {
-    margin: 20px 0;
-    text-align: center;
+.nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(255, 192, 203, 0.98); /* 少し透明感を入れると可愛い */
+        transition: 0.4s;
+        display: flex;
+        
+        /* ↓ここを修正・追加 */
+        align-items: center;       /* 縦方向中央 */
+        justify-content: center;    /* 横方向中央 */
+        padding-top: 60px;          /* ヘッダーに被らないように少し隙間を作る */
+        box-sizing: border-box;     /* パディングを含めた高さ計算にする */
+    }
+
+    .nav-list {
+        flex-direction: column;
+        text-align: center;
+        /* ↓メニュー全体を少し上にずらしたい場合はここを調整 */
+        margin-top: -10vh; 
+    }
 }
-.nav-menu.active .nav-list a {
-    font-size: 1.5em;
-    color: var(--text-dark);
-}
-.nav-menu.active .nav-list a:hover {
-    color: var(--text-light);
-}
-.nav-menu.active .nav-list a::after {
-    background-color: var(--text-light);
-}
+
 
 
 .hero-section {
