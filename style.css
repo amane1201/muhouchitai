@@ -165,6 +165,7 @@ a {
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
+
 /* × 変形（中央固定・消えない） */
 .hamburger-menu.active span:nth-child(1) {
     transform: translateY(8.5px) rotate(45deg);
