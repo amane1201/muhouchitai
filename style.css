@@ -178,10 +178,6 @@ a {
 }
 
 
-.hamburger-menu span {
-    transform-origin: center;
-}
-
 .hamburger-menu.active span:nth-child(1) {
     transform: rotate(45deg) translate(6px, 6px);
 }
@@ -852,5 +848,6 @@ a {
     .flying-deco:nth-child(2) { --initial-x: 70vw; --initial-y: 80vh; --final-x: 60vw; --final-y: -10vh; }
     .flying-deco:nth-child(3) { --initial-x: 20vw; --initial-y: 90vh; --final-x: 30vw; --final-y: -20vh; }
 }
+
 
 
