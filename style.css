@@ -1084,7 +1084,6 @@ header .hamburger-menu:not(#hamburgerMenu) {
     transition: transform 0.4s ease; /* ★これを追加 */
 }
 
-/* 右上の三本線を「絶対に」右上に固定する設定 */
 .hamburger-menu {
     display: flex !important;
     position: fixed !important; /* absoluteからfixedに変更。これで画面の右上に張り付きます */
@@ -1097,7 +1096,6 @@ header .hamburger-menu:not(#hamburgerMenu) {
     justify-content: space-between;
 }
 
-/* 棒の見た目（見えないのを防ぐ） */
 .hamburger-menu span {
     display: block !important;
     width: 100% !important;
@@ -1106,7 +1104,6 @@ header .hamburger-menu:not(#hamburgerMenu) {
     border-radius: 10px;
 }
 
-/* 左上に出てしまう幽霊（古い残骸）を力技で消す */
 .logo + .hamburger-menu,
 .nav-menu .hamburger-menu {
     display: none !important;
