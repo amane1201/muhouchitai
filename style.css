@@ -895,69 +895,116 @@ a {
 }
 
 
-/* スライダーの窓（1人分だけ見える範囲） */
+/* --- メンバー紹介スライダー 完全修正版 --- */
+
 .slider-outer {
     position: relative;
-    max-width: 350px; /* ★ここがスライダーの「横幅」になります */
-    margin: 40px auto;
+    max-width: 350px; /* 窓の幅 */
+    margin: 60px auto; /* 上下に余裕を持たせる */
     display: flex;
     align-items: center;
 }
 
 .slider-container {
-    overflow: hidden; /* ★はみ出たメンバーを隠す最重要設定 */
+    overflow: hidden; /* はみ出しを隠す（絶対必要） */
     width: 100%;
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: 3px solid var(--light-pink);
 }
 
-/* 全員が横一列に並ぶトラック */
 .slider-track {
     display: flex;
-    width: 100%; /* 親のslider-containerに合わせる */
-    transition: transform 0.5s ease-in-out;
+    /* JSの translateX(-100%) が正しく動くように設定 */
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%; 
 }
 
-/* 個別のカード */
 .member-card {
-    min-width: 100%; /* ★1枚で「窓」をピッタリ埋める */
-    flex-shrink: 0;   /* ★勝手に縮まないように固定 */
+    min-width: 100%; /* 1枚で窓をピッタリ塞ぐ */
+    flex-shrink: 0;   /* 潰れないように固定 */
+    padding: 40px 20px;
     box-sizing: border-box;
-    padding: 30px 20px;
-    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
-/* アイコンなどの調整 */
 .member-icon {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    background: white;
-    margin-bottom: 15px;
+    background-color: var(--pastel-lavender);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3em;
-    border: 3px solid var(--primary-pink);
+    font-size: 4em;
+    margin-bottom: 20px;
+    border: 4px solid var(--primary-pink);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* 矢印ボタンの位置調整 */
+.role {
+    background-color: var(--primary-pink);
+    color: white;
+    padding: 4px 15px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.role.member { background-color: var(--pastel-blue); }
+
+.member-card h4 {
+    margin: 10px 0 5px;
+    font-size: 1.5em;
+    color: var(--text-dark);
+}
+
+.member-card p {
+    margin: 0;
+    font-size: 1em;
+    color: #777;
+}
+
+/* 矢印ボタンの見た目（見えないのを防ぐ） */
 .slider-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 20;
-    /* ...（ボタンの色などはそのまま） */
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: var(--primary-pink);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
-.prev-btn { left: -50px; }
-.next-btn { right: -50px; }
 
-@media (max-width: 500px) {
-    .slider-outer { max-width: 280px; } /* スマホではさらに小さく */
-    .prev-btn { left: -40px; }
-    .next-btn { right: -40px; }
+.slider-btn:hover {
+    background-color: var(--pastel-blue);
+    transform: translateY(-50%) scale(1.1);
 }
+
+.prev-btn { left: -60px; }
+.next-btn { right: -60px; }
+
+/* スマホ対応 */
+@media (max-width: 600px) {
+    .slider-outer {
+        max-width: 85%; /* 画面幅に合わせる */
+    }
+    .prev-btn { left: -35px; width: 35px; height: 35px; }
+    .next-btn { right: -35px; width: 35px; height: 35px; }
+}
+
