@@ -155,18 +155,7 @@ a {
 .nav-list a:hover::after {
     width: 100%;
 }
-/* ハンバーガーメニュー本体 */
-.hamburger-menu {
-    display: none; /* PCでは非表示 */
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 20px;
-    cursor: pointer;
-    z-index: 1001;
-}
-
-/* 3本線 */
+/* 3本線の基本 */
 .hamburger-menu span {
     display: block;
     width: 100%;
@@ -174,12 +163,11 @@ a {
     background-color: var(--text-light);
     border-radius: 2px;
     transition: transform 0.3s ease, opacity 0.3s ease;
-    transform-origin: center;
 }
 
-
+/* × 変形（中央固定・消えない） */
 .hamburger-menu.active span:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
+    transform: translateY(8.5px) rotate(45deg);
 }
 
 .hamburger-menu.active span:nth-child(2) {
@@ -187,8 +175,9 @@ a {
 }
 
 .hamburger-menu.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
+    transform: translateY(-8.5px) rotate(-45deg);
 }
+
 
 
 .nav-menu.active .nav-list {
@@ -848,6 +837,7 @@ a {
     .flying-deco:nth-child(2) { --initial-x: 70vw; --initial-y: 80vh; --final-x: 60vw; --final-y: -10vh; }
     .flying-deco:nth-child(3) { --initial-x: 20vw; --initial-y: 90vh; --final-x: 30vw; --final-y: -20vh; }
 }
+
 
 
 
