@@ -895,5 +895,88 @@ a {
 }
 
 
+/* メンバーセクション全体のスタイル */
+.members-section {
+    background-color: var(--light-pink);
+}
 
+.member-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
 
+/* カードの基本設定 */
+.member-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    width: 280px; /* PCでの幅 */
+    text-align: center;
+}
+
+.member-card:hover {
+    transform: translateY(-5px);
+}
+
+/* アイコン（画像を入れる場合はここを調整） */
+.member-icon {
+    font-size: 3em;
+    width: 80px;
+    height: 80px;
+    background: var(--pastel-lavender);
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.role {
+    display: inline-block;
+    background: var(--primary-pink);
+    color: white;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* メンバー（小カード）のスタイル：場所を取らないように小さく */
+.member-card.mini {
+    width: 150px;
+    padding: 15px;
+}
+
+.member-icon-s {
+    font-size: 2em;
+    width: 50px;
+    height: 50px;
+    background: var(--pastel-blue);
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* スマホ用の調整 */
+@media (max-width: 768px) {
+    .member-group {
+        gap: 15px;
+    }
+    
+    .member-card {
+        width: 100%; /* スマホでは1枚ずつ並べる、またはスワイプにするならここを調整 */
+        max-width: 320px;
+    }
+
+    .member-card.mini {
+        width: calc(50% - 10px); /* メンバーは横に2つ並ぶようにして場所を節約 */
+    }
+}
